@@ -30,8 +30,4 @@ Dr. Alejandro Viveros Domínguez
 
 ## Licencia
 
-Copyright © 2025 Dr. Alejandro Viveros Domínguez. Todos los derechos reservados.
-
-Este sitio web y su contenido están protegidos por las leyes de derechos de autor. Todo el contenido, incluyendo pero no limitado a textos, imágenes, gráficos, logotipos y material multimedia, es propiedad exclusiva del Dr. Alejandro Viveros Domínguez.
-
-Queda estrictamente prohibida cualquier reproducción, distribución, modificación o uso no autorizado del contenido sin el consentimiento expreso por escrito del propietario.
+Este proyecto está bajo una licencia propietaria. Ver el archivo [LICENSE](LICENSE) para más detalles.
