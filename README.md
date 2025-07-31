@@ -2,11 +2,28 @@
 
 Sitio web profesional del Dr. Alejandro Viveros Domínguez, especialista en otorrinolaringología y cirugía de cabeza y cuello.
 
-## Estructura del Proyecto
+## Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- HTML5 & CSS3
+- JavaScript moderno
+- PHP
+- Nginx/Apache
+- Diseño Responsive
+- Optimización SEO
 
-## Expanding the ESLint configuration
+## Características
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Diseño responsive
+- Banner de cookies
+- Aviso de privacidad
+- Integración con redes sociales
+- Formulario de contacto
+- Sistema de citas
+- Protección de contenido
+- Optimización SEO
+
+## Contacto
+
+Dr. Alejandro Viveros Domínguez
+- Email: contacto@otorrinonet.com
+- Dirección: Buenavista 20, Col. Lindavista, 07300, Gustavo A Madero, Ciudad de México
