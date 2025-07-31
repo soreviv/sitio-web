@@ -1,0 +1,101 @@
+# Redirigir todo el tráfico a HTTPS y www
+RewriteEngine On
+
+# Asegurar que siempre se use HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.otorrinonet.com/$1 [L,R=301]
+
+# Redirigir otorrinonet.com a www.otorrinonet.com
+RewriteCond %{HTTP_HOST} ^otorrinonet\.com$ [NC]
+RewriteRule ^(.*)$ https://www.otorrinonet.com/$1 [L,R=301]
+
+# Comprimir archivos estáticos
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Caché del navegador
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 1 day"
+</IfModule>
+
+# Proteger archivos sensibles
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak|git|env|config|lock|json)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Cabeceras de seguridad
+<IfModule mod_headers.c>
+    # Prevenir clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevenir MIME-sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Política de seguridad de contenido
+    Header always set Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; font-src 'self' https: data:; connect-src 'self' https:; frame-ancestors 'self';"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Habilitar HSTS
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Deshabilitar la detección automática de MIME types
+    Header always set X-Download-Options "noopen"
+    
+    # Deshabilitar la cache para contenido sensible
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "private, no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Prevenir listado de directorios
+Options -Indexes
+
+# Prevenir acceso a archivos ocultos
+RedirectMatch 404 /\..*$
+
+# Limitar métodos HTTP
+<LimitExcept GET POST HEAD>
+    deny from all
+</LimitExcept>
+
+# Proteger contra ataques comunes
+RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Bloquear acceso a respaldos y archivos de sistema
+RedirectMatch 404 \.(git|svn|htaccess|env|config|log|bak|swp|fla|psd|ini|lock)$
+
+# Prevenir hotlinking de imágenes
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?otorrinonet\.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [NC,F,L]

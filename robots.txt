@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+Disallow: /backend/
+
+# Permitir acceso a archivos específicos
+Allow: /css/styles.css
+Allow: /css/cookie-banner.css
+Allow: /css/social-media.css
+
+# Sitemap
+Sitemap: https://otorrinonet.com/sitemap.xml
