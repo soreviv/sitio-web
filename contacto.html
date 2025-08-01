@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Dr. [Nombre] Otorrinolaringólogo CDMX | Ubicación y Horarios</title>
+  <meta name="description"
+    content="Contacta al Dr. [Nombre], especialista en otorrinolaringología en Ciudad de México. Dirección, teléfono, horarios, ubicación y formulario de contacto.">
+  <meta name="keywords"
+    content="contacto otorrino CDMX, ubicación consultorio otorrinolaringólogo, horarios especialista oído nariz garganta, teléfono otorrino">
+  <link rel="canonical" href="https://www.drnombre.com/contacto.html">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/cookie-banner.css">
+  <link rel="stylesheet" href="css/social-media.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>Dr. [Nombre Apellido]</h2>
+          <p>Otorrinolaringología</p>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="agendar-cita.html">Agendar Cita</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="page-header">
+        <h1>Contacto</h1>
+        <p>Estamos aquí para atenderte. Contáctanos para más información o agenda tu cita.</p>
+      </div>
+
+      <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Información de Contacto</h2>
+
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Dirección</h3>
+              <p>Buenavista 20<br>
+                Col. Lindavista, 07300<br>
+                Gustavo A. Madero, CDMX</p>
+              <a href="https://maps.google.com/?q=Buenavista+20+Lindavista+CDMX" target="_blank" class="map-link">
+                <i class="fas fa-directions"></i> Ver en Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h3>Teléfono</h3>
+              <p><a href="tel:+525512345678">+52 55 1234-5678</a></p>
+              <small>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 9:00 - 14:00</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Correo Electrónico</h3>
+              <p><a href="mailto:contacto@otorrinonet.com">contacto@otorrinonet.com</a></p>
+              <small>Respuesta en menos de 24 horas</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <h3>WhatsApp</h3>
+              <p><a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20solicitar%20información" target="_blank">
+                +52 55 1234-5678</a></p>
+              <small>Disponible de Lunes a Viernes</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h3>Horarios de Atención</h3>
+              <div class="schedule">
+                <p><strong>Lunes a Viernes:</strong> 9:00 - 18:00</p>
+                <p><strong>Sábados:</strong> 9:00 - 14:00</p>
+                <p><strong>Domingos:</strong> Cerrado</p>
+                <p><strong>Urgencias:</strong> 24/7 por WhatsApp</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <h3>Información Adicional</h3>
+              <ul class="additional-info">
+                <li><i class="fas fa-parking"></i> Estacionamiento disponible</li>
+                <li><i class="fas fa-wheelchair"></i> Acceso para personas con discapacidad</li>
+                <li><i class="fas fa-wifi"></i> Wi-Fi gratuito en sala de espera</li>
+                <li><i class="fas fa-credit-card"></i> Aceptamos tarjetas y seguros médicos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2>Envíanos un Mensaje</h2>
+          <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
+          
+          <form id="contactForm" action="#" method="POST" novalidate>
+            <div class="form-group">
+              <label for="nombre">Nombre Completo *</label>
+              <input type="text" id="nombre" name="nombre" required>
+              <div class="error-message" id="nombre-error"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Correo Electrónico *</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="email-error"></div>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="55 1234 5678" required>
+                <div class="error-message" id="telefono-error"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="asunto">Asunto</label>
+              <select id="asunto" name="asunto">
+                <option value="">Selecciona un asunto</option>
+                <option value="cita">Solicitar cita</option>
+                <option value="informacion">Solicitar información</option>
+                <option value="segunda-opinion">Segunda opinión</option>
+                <option value="seguimiento">Seguimiento de tratamiento</option>
+                <option value="urgencia">Urgencia médica</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" rows="5" 
+                placeholder="Describe brevemente tu consulta o el motivo de tu contacto..." required></textarea>
+              <div class="error-message" id="mensaje-error"></div>
+            </div>
+
+            <!-- Consentimiento LFPDPPP -->
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <span class="checkmark"></span>
+                He leído y acepto el <a href="aviso-privacidad.html" target="_blank">Aviso de Privacidad</a> 
+                y autorizo el tratamiento de mis datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de Particulares (LFPDPPP) *
+              </label>
+              <div class="error-message" id="privacidad-error"></div>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="comunicaciones" name="comunicaciones">
+                <span class="checkmark"></span>
+                Acepto recibir comunicaciones promocionales y de seguimiento por correo electrónico y WhatsApp
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+
+            <div class="form-disclaimer">
+              <p><strong>Importante:</strong> Para urgencias médicas, contacta directamente por teléfono o WhatsApp. 
+              Los mensajes enviados por este formulario pueden tardar hasta 24 horas en ser respondidos.</p>
+              <p class="cofepris-notice">Consultorio registrado ante COFEPRIS. Los resultados pueden variar según cada paciente.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="map-section">
+        <h2>Ubicación</h2>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.1426!2d-99.1187!3d19.4756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI4JzMyLjIiTiA5OcKwMDcnMDcuMyJX!5e0!3m2!1ses!2smx!4v1234567890"
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación del consultorio Dr. [Nombre] - Otorrinolaringólogo CDMX">
+          </iframe>
+        </div>
+        <div class="map-info">
+          <h3>Cómo llegar</h3>
+          <div class="transport-options">
+            <div class="transport-item">
+              <i class="fas fa-subway"></i>
+              <div>
+                <h4>Metro</h4>
+                <p>Línea 6 - Estación Lindavista (5 min caminando)</p>
+              </div>
+            </div>
+            <div class="transport-item">
+              <i class="fas fa-bus"></i>
+              <div>
+                <h4>Transporte Público</h4>
+                <p>Rutas: 1, 42, 76, 85 - Parada Lindavista</p>
+              </div>
+            </div>
+            <div class="transport-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <h4>Automóvil</h4>
+                <p>Estacionamiento disponible - Entrada por Buenavista</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <h3>¿Necesito cita previa?</h3>
+            <p>Sí, todas las consultas son por cita previa. Puedes agendar por teléfono, WhatsApp o a través de nuestro formulario en línea.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Atienden urgencias?</h3>
+            <p>Para urgencias otorrinolaringológicas, contáctanos por WhatsApp o teléfono. Evaluamos cada caso y proporcionamos atención prioritaria cuando es necesario.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Qué seguros médicos aceptan?</h3>
+            <p>Trabajamos con los principales seguros médicos. Consulta con tu aseguradora sobre la cobertura y ponte en contacto con nosotros para confirmar.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Cuánto tiempo dura una consulta?</h3>
+            <p>Las consultas de primera vez duran aproximadamente 45 minutos, mientras que las consultas de seguimiento suelen ser de 30 minutos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Buenavista 20, Col. Lindavista, 07300, CDMX</p>
+          <p><i class="fas fa-phone"></i> +52 55 1234-5678</p>
+          <p><i class="fas fa-envelope"></i> contacto@otorrinonet.com</p>
+          <div class="social-media">
+            <ul class="social-media-list">
+              <li><a href="https://facebook.com/drviverosorl" target="_blank" aria-label="Síguenos en Facebook"><i
+                    class="fab fa-facebook"></i></a></li>
+              <li><a href="https://instagram.com/drviverosorl" target="_blank" aria-label="Síguenos en Instagram"><i
+                    class="fab fa-instagram"></i></a></li>
+              <li><a href="https://x.com/drviverosorl" target="_blank" aria-label="Síguenos en X"><i
+                    class="fab fa-x-twitter"></i></a></li>
+              <li><a href="https://youtube.com/@drviverosorl" target="_blank" aria-label="Síguenos en YouTube"><i
+                    class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Horarios</h3>
+          <p>Lunes a Viernes: 9:00 - 18:00</p>
+          <p>Sábados: 9:00 - 14:00</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <p><a href="aviso-privacidad.html">Aviso de Privacidad</a></p>
+          <p><a href="politica-cookies.html">Política de Cookies</a></p>
+          <p><a href="terminos-condiciones.html">Términos y Condiciones</a></p>
+          <p>Consultorio registrado ante COFEPRIS</p>
+          <p class="disclaimer">Los resultados pueden variar según cada paciente</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Dr. [Nombre]. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20solicitar%20información" target="_blank"
+      aria-label="Contactar por WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/cookie-banner.js"></script>
+  <script src="js/content-protection.js"></script>
+</body>
+
+</html>
