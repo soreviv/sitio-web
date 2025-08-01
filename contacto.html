@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Dr. [Nombre] Otorrinolaringólogo CDMX</title>
+  <meta name="description"
+    content="Contacta al Dr. [Nombre], especialista en otorrinolaringología en Ciudad de México. Dirección, teléfono, horarios y ubicación.">
+  <link rel="canonical" href="https://www.drnombre.com/contacto.html">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/cookie-banner.css">
+  <link rel="stylesheet" href="css/social-media.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>Dr. [Nombre Apellido]</h2>
+          <p>Otorrinolaringología</p>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="agendar-cita.html">Agendar Cita</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contacto</h1>
+      <p>Estamos aquí para atenderte. Contáctanos para más información sobre nuestros servicios.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Información de Contacto</h2>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Dirección</h3>
+              <p>[Calle y Número]<br>
+                [Colonia], [Delegación]<br>
+                Ciudad de México, C.P. [Código Postal]</p>
+              <small>Metro más cercano: [Estación]</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Teléfono</h3>
+              <p><a href="tel:+525512345678">+52 55 1234-5678</a></p>
+              <small>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 9:00 - 14:00</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Correo Electrónico</h3>
+              <p><a href="mailto:contacto@otorrinonet.com">contacto@otorrinonet.com</a></p>
+              <small>Respuesta en menos de 24 horas</small>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h3>WhatsApp</h3>
+              <p><a href="https://wa.me/525512345678" target="_blank">+52 55 1234-5678</a></p>
+              <small>Atención inmediata para urgencias</small>
+            </div>
+          </div>
+
+          <div class="office-hours">
+            <h3><i class="fas fa-clock"></i> Horarios de Atención</h3>
+            <div class="hours-grid">
+              <div class="day-hours">
+                <span class="day">Lunes - Viernes</span>
+                <span class="hours">9:00 - 18:00</span>
+              </div>
+              <div class="day-hours">
+                <span class="day">Sábados</span>
+                <span class="hours">9:00 - 14:00</span>
+              </div>
+              <div class="day-hours">
+                <span class="day">Domingos</span>
+                <span class="hours">Cerrado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2>Envíanos un Mensaje</h2>
+          <p>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</p>
+          
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo <span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" required data-min-length="2">
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono <span class="required">*</span></label>
+                <input type="tel" id="telefono" name="telefono" required placeholder="10 dígitos">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Correo electrónico <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="asunto">Asunto <span class="required">*</span></label>
+              <select id="asunto" name="asunto" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="consulta">Información sobre consulta</option>
+                <option value="cirugia">Información sobre cirugías</option>
+                <option value="audiometria">Audiometrías y estudios</option>
+                <option value="cita">Agendar cita</option>
+                <option value="seguimiento">Seguimiento post-consulta</option>
+                <option value="urgencia">Urgencia médica</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Mensaje <span class="required">*</span></label>
+              <textarea id="mensaje" name="mensaje" rows="5" required data-min-length="10" 
+                placeholder="Describe tu consulta o necesidad..."></textarea>
+            </div>
+
+            <div class="disclaimer-box">
+              <p><strong>Importante:</strong> Este formulario no constituye una consulta médica. Para urgencias médicas, 
+              llama directamente o acude al servicio de urgencias más cercano.</p>
+            </div>
+
+            <div class="consent-section">
+              <div class="checkbox-group">
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                <label for="privacy-consent">
+                  He leído y acepto el <a href="aviso-privacidad.html" target="_blank">Aviso de Privacidad</a> 
+                  y autorizo el tratamiento de mis datos personales conforme a la Ley Federal de Protección 
+                  de Datos Personales en Posesión de los Particulares. <span class="required">*</span>
+                </label>
+              </div>
+              
+              <div class="checkbox-group">
+                <input type="checkbox" id="marketing-consent" name="marketing-consent">
+                <label for="marketing-consent">
+                  Acepto recibir información promocional y educativa sobre servicios médicos 
+                  (opcional, puedes cancelar en cualquier momento).
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <h2>Ubicación del Consultorio</h2>
+      <div class="map-container">
+        <!-- Google Maps Placeholder -->
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Mapa interactivo del consultorio</p>
+          <small>Integración con Google Maps pendiente</small>
+        </div>
+        <!-- 
+        Para integrar Google Maps real, reemplaza el div anterior con:
+        <iframe src="https://www.google.com/maps/embed?pb=..." 
+                width="100%" height="400" style="border:0;" 
+                allowfullscreen="" loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        -->
+      </div>
+      
+      <div class="location-details">
+        <div class="location-item">
+          <i class="fas fa-car"></i>
+          <div>
+            <h4>Estacionamiento</h4>
+            <p>Valet parking disponible o estacionamiento público cercano</p>
+          </div>
+        </div>
+        <div class="location-item">
+          <i class="fas fa-subway"></i>
+          <div>
+            <h4>Transporte Público</h4>
+            <p>Metro [Estación] a 5 minutos caminando</p>
+          </div>
+        </div>
+        <div class="location-item">
+          <i class="fas fa-wheelchair"></i>
+          <div>
+            <h4>Accesibilidad</h4>
+            <p>Instalaciones completamente accesibles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contact -->
+  <section class="emergency-section">
+    <div class="container">
+      <div class="emergency-alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <h3>¿Tienes una urgencia médica?</h3>
+          <p>Para emergencias médicas, llama inmediatamente o acude al servicio de urgencias más cercano.</p>
+          <a href="tel:+525512345678" class="btn btn-emergency">
+            <i class="fas fa-phone"></i> Llamar Ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-map-marker-alt"></i> [Dirección completa], CDMX</p>
+          <p><i class="fas fa-phone"></i> +52 55 1234-5678</p>
+          <p><i class="fas fa-envelope"></i> contacto@otorrinonet.com</p>
+          <div class="social-media">
+            <ul class="social-media-list">
+              <li><a href="https://facebook.com/drviverosorl" target="_blank" aria-label="Síguenos en Facebook"><i
+                    class="fab fa-facebook"></i></a></li>
+              <li><a href="https://instagram.com/drviverosorl" target="_blank" aria-label="Síguenos en Instagram"><i
+                    class="fab fa-instagram"></i></a></li>
+              <li><a href="https://x.com/drviverosorl" target="_blank" aria-label="Síguenos en X"><i
+                    class="fab fa-x-twitter"></i></a></li>
+              <li><a href="https://youtube.com/@drviverosorl" target="_blank" aria-label="Síguenos en YouTube"><i
+                    class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Horarios</h3>
+          <p>Lunes a Viernes: 9:00 - 18:00</p>
+          <p>Sábados: 9:00 - 14:00</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <p><a href="aviso-privacidad.html">Aviso de Privacidad</a></p>
+          <p><a href="politica-cookies.html">Política de Cookies</a></p>
+          <p><a href="terminos-condiciones.html">Términos y Condiciones</a></p>
+          <p>Consultorio registrado ante COFEPRIS</p>
+          <p class="disclaimer">Los resultados pueden variar según cada paciente</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Dr. [Nombre]. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20agendar%20una%20cita" target="_blank"
+      aria-label="Contactar por WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/cookie-banner.js"></script>
+  <script src="js/content-protection.js"></script>
+</body>
+
+</html>
