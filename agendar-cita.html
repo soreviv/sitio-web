@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita - Dr. [Nombre] Otorrinolaringólogo CDMX</title>
+    <meta name="description"
+        content="Agenda tu cita con el Dr. [Nombre], especialista en otorrinolaringología en Ciudad de México. Sistema de citas en línea.">
+    <link rel="canonical" href="https://www.drnombre.com/agendar-cita.html">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cookie-banner.css">
+    <link rel="stylesheet" href="css/social-media.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>Dr. [Nombre Apellido]</h2>
+                    <p>Otorrinolaringología</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="agendar-cita.html" class="active">Agendar Cita</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Agendar Cita</h1>
+            <p>Reserva tu consulta con el Dr. [Nombre]. Selecciona la fecha y hora que mejor te convenga.</p>
+            <p class="disclaimer">Las citas están sujetas a disponibilidad y confirmación</p>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+        <div class="container">
+            
+            <!-- Instructions -->
+            <div class="appointment-instructions">
+                <h2>¿Cómo agendar tu cita?</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Selecciona una fecha</h3>
+                        <p>Elige el día disponible en el calendario</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Escoge el horario</h3>
+                        <p>Selecciona la hora que mejor te convenga</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Completa tus datos</h3>
+                        <p>Llena el formulario con tu información</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <h2>Selecciona tu fecha y hora</h2>
+                <div class="calendar-container" id="appointment-calendar">
+                    <!-- Calendar will be rendered by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Appointment Form -->
+            <div class="appointment-form-section">
+                <h2>Datos de la Cita</h2>
+                <form id="appointment-form" class="appointment-form">
+                    <!-- Hidden fields for selected date/time -->
+                    <input type="hidden" id="appointment-date" name="appointment-date">
+                    <input type="hidden" id="appointment-time" name="appointment-time">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo <span class="required">*</span></label>
+                            <input type="text" id="nombre" name="nombre" required data-min-length="2">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono <span class="required">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" required placeholder="10 dígitos">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo electrónico <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edad">Edad <span class="required">*</span></label>
+                            <input type="number" id="edad" name="edad" required min="1" max="120">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo-consulta">Tipo de consulta <span class="required">*</span></label>
+                        <select id="tipo-consulta" name="tipo-consulta" required>
+                            <option value="">Selecciona el tipo de consulta</option>
+                            <option value="primera-vez">Primera consulta</option>
+                            <option value="seguimiento">Consulta de seguimiento</option>
+                            <option value="valoracion-cirugia">Valoración para cirugía</option>
+                            <option value="audiometria">Audiometría</option>
+                            <option value="nasofaringoscopia">Nasofaringoscopia</option>
+                            <option value="urgencia">Consulta urgente</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivo">Motivo de la consulta <span class="required">*</span></label>
+                        <textarea id="motivo" name="motivo" rows="4" required data-min-length="10"
+                            placeholder="Describe brevemente tu síntoma o motivo de consulta..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medicamentos">Medicamentos actuales</label>
+                        <textarea id="medicamentos" name="medicamentos" rows="3"
+                            placeholder="Lista los medicamentos que tomas actualmente (opcional)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alergias">Alergias conocidas</label>
+                        <input type="text" id="alergias" name="alergias" 
+                               placeholder="Medicamentos, alimentos u otras alergias (opcional)">
+                    </div>
+
+                    <div class="disclaimer-box">
+                        <h4><i class="fas fa-info-circle"></i> Información importante:</h4>
+                        <ul>
+                            <li>La cita se considerará confirmada una vez que recibas la confirmación por teléfono o email</li>
+                            <li>Por favor llega 15 minutos antes de tu cita</li>
+                            <li>Trae una identificación oficial y, si es seguimiento, tus estudios previos</li>
+                            <li>En caso de no poder asistir, cancela con al menos 24 horas de anticipación</li>
+                        </ul>
+                    </div>
+
+                    <div class="medical-disclaimer">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Aviso médico:</h4>
+                        <p>Este formulario no constituye una consulta médica. Si presentas una urgencia médica 
+                        (dificultad para respirar, sangrado abundante, dolor severo), acude inmediatamente al 
+                        servicio de urgencias más cercano o llama al 911.</p>
+                    </div>
+
+                    <div class="consent-section">
+                        <h4>Consentimiento y Autorización</h4>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                            <label for="privacy-consent">
+                                He leído y acepto el <a href="aviso-privacidad.html" target="_blank">Aviso de Privacidad</a> 
+                                y autorizo el tratamiento de mis datos personales conforme a la Ley Federal de Protección 
+                                de Datos Personales en Posesión de los Particulares. <span class="required">*</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="medical-consent" name="medical-consent" required>
+                            <label for="medical-consent">
+                                Autorizo al Dr. [Nombre] y su equipo médico a realizar el examen médico necesario 
+                                y a contactarme para confirmar la cita. <span class="required">*</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms-consent" name="terms-consent" required>
+                            <label for="terms-consent">
+                                Acepto los <a href="terminos-condiciones.html" target="_blank">Términos y Condiciones</a> 
+                                del servicio y entiendo que los resultados pueden variar según cada paciente. 
+                                <span class="required">*</span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="communication-consent" name="communication-consent">
+                            <label for="communication-consent">
+                                Acepto recibir recordatorios de cita y comunicaciones relacionadas con mi atención médica 
+                                vía SMS, email o WhatsApp (opcional).
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calendar-check"></i> Agendar Cita
+                        </button>
+                        <div class="alternative-contact">
+                            <p>¿Prefieres agendar por teléfono?</p>
+                            <a href="tel:+525512345678" class="btn btn-secondary">
+                                <i class="fas fa-phone"></i> Llamar Ahora
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Alternatives -->
+            <div class="contact-alternatives">
+                <h2>Otras formas de contacto</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <h3>Llamada directa</h3>
+                        <p>Agenda por teléfono de lunes a viernes de 9:00 a 18:00</p>
+                        <a href="tel:+525512345678" class="btn btn-outline">+52 55 1234-5678</a>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>Envía un mensaje para agendar tu cita rápidamente</p>
+                        <a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20agendar%20una%20cita" 
+                           target="_blank" class="btn btn-outline">Enviar mensaje</a>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Correo electrónico</h3>
+                        <p>Escríbenos y te responderemos en menos de 24 horas</p>
+                        <a href="mailto:contacto@otorrinonet.com" class="btn btn-outline">Enviar email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> [Dirección completa], CDMX</p>
+                    <p><i class="fas fa-phone"></i> +52 55 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> contacto@otorrinonet.com</p>
+                    <div class="social-media">
+                        <ul class="social-media-list">
+                            <li><a href="https://facebook.com/drviverosorl" target="_blank" aria-label="Síguenos en Facebook"><i
+                                        class="fab fa-facebook"></i></a></li>
+                            <li><a href="https://instagram.com/drviverosorl" target="_blank" aria-label="Síguenos en Instagram"><i
+                                        class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://x.com/drviverosorl" target="_blank" aria-label="Síguenos en X"><i
+                                        class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="https://youtube.com/@drviverosorl" target="_blank" aria-label="Síguenos en YouTube"><i
+                                        class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 9:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 14:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="aviso-privacidad.html">Aviso de Privacidad</a></p>
+                    <p><a href="politica-cookies.html">Política de Cookies</a></p>
+                    <p><a href="terminos-condiciones.html">Términos y Condiciones</a></p>
+                    <p>Consultorio registrado ante COFEPRIS</p>
+                    <p class="disclaimer">Los resultados pueden variar según cada paciente</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dr. [Nombre]. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20agendar%20una%20cita" target="_blank"
+            aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/appointment.js"></script>
+    <script src="js/cookie-banner.js"></script>
+    <script src="js/content-protection.js"></script>
+</body>
+
+</html>
