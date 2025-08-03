@@ -12,7 +12,7 @@ DEPLOY_PATH="/var/www/otorrinonet.com"
 BACKUP_PATH="/root/backups/otorrinonet"
 DATE=$(date +%Y%m%d_%H%M%S)
 BRANCH="main"
-DOMAIN="66.42.95.115"  # Cambiar por otorrinonet.com cuando el dominio esté configurado
+DOMAIN="otorrinonet.com"  # Dominio principal con SSL configurado
 
 # Función para imprimir mensajes
 print_message() {
@@ -98,7 +98,12 @@ sudo systemctl reload php8.2-fpm
 
 # Verificar el sitio
 print_message "Verificando el sitio..." "$YELLOW"
-HTTP_RESPONSE=$(curl -sL -w "%{http_code}" "http://$DOMAIN" -o /dev/null)
+# Probar HTTPS primero, luego HTTP como fallback
+HTTP_RESPONSE=$(curl -sL -w "%{http_code}" "https://$DOMAIN" -o /dev/null 2>/dev/null)
+if [ "$HTTP_RESPONSE" != "200" ]; then
+    HTTP_RESPONSE=$(curl -sL -w "%{http_code}" "http://$DOMAIN" -o /dev/null)
+fi
+
 if [ "$HTTP_RESPONSE" == "200" ]; then
     print_message "Sitio funcionando correctamente" "$GREEN"
 else
