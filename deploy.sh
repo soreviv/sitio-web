@@ -7,11 +7,12 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Configuración
-REPO_PATH="/home/usuario/otorrinonet.com"
+REPO_PATH="/root/otorrinonet.com"
 DEPLOY_PATH="/var/www/otorrinonet.com"
-BACKUP_PATH="/home/usuario/backups/otorrinonet"
+BACKUP_PATH="/root/backups/otorrinonet"
 DATE=$(date +%Y%m%d_%H%M%S)
 BRANCH="main"
+DOMAIN="66.42.95.115"  # Cambiar por otorrinonet.com cuando el dominio esté configurado
 
 # Función para imprimir mensajes
 print_message() {
@@ -91,7 +92,7 @@ sudo systemctl reload php8.2-fpm
 
 # Verificar el sitio
 print_message "Verificando el sitio..." "$YELLOW"
-HTTP_RESPONSE=$(curl -sL -w "%{http_code}" "https://otorrinonet.com" -o /dev/null)
+HTTP_RESPONSE=$(curl -sL -w "%{http_code}" "http://$DOMAIN" -o /dev/null)
 if [ "$HTTP_RESPONSE" == "200" ]; then
     print_message "Sitio funcionando correctamente" "$GREEN"
 else
