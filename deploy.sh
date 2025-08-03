@@ -37,8 +37,14 @@ create_backup() {
 # Función para verificar sintaxis de PHP
 check_php_syntax() {
     print_message "Verificando sintaxis de PHP..." "$YELLOW"
-    find "$REPO_PATH" -name "*.php" -exec php -l {} \; | grep -v "No syntax errors"
-    if [ $? -eq 0 ]; then
+    PHP_FILES=$(find "$REPO_PATH" -name "*.php" -type f | wc -l)
+    if [ "$PHP_FILES" -eq 0 ]; then
+        print_message "No se encontraron archivos PHP - omitiendo verificación" "$YELLOW"
+        return 0
+    fi
+    
+    ERRORS=$(find "$REPO_PATH" -name "*.php" -exec php -l {} \; | grep -v "No syntax errors" | wc -l)
+    if [ "$ERRORS" -eq 0 ]; then
         print_message "Sintaxis PHP verificada" "$GREEN"
     else
         print_message "Error en la sintaxis PHP" "$RED"
