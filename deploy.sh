@@ -83,6 +83,7 @@ check_nginx_config
 # Sincronizar archivos
 print_message "Sincronizando archivos..." "$YELLOW"
 rsync -av --delete --exclude '.git*' --exclude 'deploy.sh' --exclude 'README.md' \
+    --exclude 'docs/' --exclude '.gitignore' \
     "$REPO_PATH/" "$DEPLOY_PATH/"
 
 # Establecer permisos
