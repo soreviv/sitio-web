@@ -4,7 +4,11 @@ html
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>ce-width, initial-scale=1.0">
   <title>Dr. Alejandro Viveros Domínguez - Otorrinolaringología y Cirugía de Cabeza y Cuello | CDMX</title>
   <meta name="description"
     content="Consultorio especializado en otorrinolaringología y cirugía de cabeza y cuello en Ciudad de México. Dr. Alejandro Viveros Domínguez. Audiometrías, cirugías, rinoplastia y más.">
@@ -18,6 +22,9 @@ html
 </head>
 
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  
   <!-- Header -->
   <header>
     <nav class="navbar">
@@ -26,13 +33,13 @@ html
           <h2>Dr. Alejandro Viveros Domínguez</h2>
           <p>Otorrinolaringología</p>
         </div>
-        <ul class="nav-menu">
+        <ul class="nav-menu" role="navigation" aria-label="Navegación principal">
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
           <li><a href="agendar-cita.html">Agendar Cita</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
-        <div class="hamburger">
+        <div class="hamburger" role="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -42,9 +49,10 @@ html
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello</h1>
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello</h1>
       <p>Atención médica especializada con más de 15 años de experiencia en Ciudad de México</p>
       <div class="cta-buttons">
         <a href="agendar-cita.html" class="btn btn-primary">Agendar Cita</a>
