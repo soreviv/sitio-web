@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /css/
 Disallow: /js/
-Disallow: /backend/
+Disallow: /docs/
 
 # Permitir acceso a archivos específicos
 Allow: /css/styles.css
