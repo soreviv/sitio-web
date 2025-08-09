@@ -80,7 +80,13 @@ html
           <p class="cofepris-notice">Consultorio registrado ante COFEPRIS</p>
         </div>
         <div class="about-image">
-          <img src="images/doctor-profile.jpg" alt="Dr. Alejandro Viveros Domínguez - Otorrinolaringólogo CDMX">
+          <picture>
+            <source type="image/webp" srcset="images/doctor-profile-400.webp 400w, images/doctor-profile-800.webp 800w, images/doctor-profile-1200.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 992px) 50vw, 400px">
+            <img src="images/doctor-profile.jpg" 
+                 srcset="images/doctor-profile.jpg 1200w" 
+                 alt="Dr. Alejandro Viveros Domínguez, otorrinolaringólogo, retrato profesional en consultorio" 
+                 loading="lazy" decoding="async" width="400" height="600">
+          </picture>
         </div>
       </div>
     </div>
