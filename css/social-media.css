@@ -1,38 +1,29 @@
-.social-media {
-    margin-top: 1rem;
-}
+/* Redes sociales - versión inline */
+.social-media { margin-top: 10px; }
 
-.social-media-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
+.social-media-inline { display: inline-flex; flex-wrap: nowrap; align-items: center; gap: 1rem; }
 
-.social-media-list li a {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.social-media-list li a:hover {
+.social-media-inline a {
     color: var(--primary-color);
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+    border-radius: 50%;
+    position: relative;
 }
 
-.social-media-list .fa-facebook:hover {
-    color: #1877f2;
+.social-media-inline a:hover {
+    color: var(--accent-color);
+    transform: scale(1.15);
+    background-color: rgba(0,0,0,0.05);
 }
 
-.social-media-list .fa-instagram:hover {
-    color: #e4405f;
-}
+.social-media-inline a:active { transform: scale(1.05); }
 
-.social-media-list .fa-x-twitter:hover {
-    color: #000000;
-}
+.social-media-inline a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
-.social-media-list .fa-youtube:hover {
-    color: #ff0000;
-}
+@media (prefers-reduced-motion: reduce) { .social-media-inline a { transition: none; } }
