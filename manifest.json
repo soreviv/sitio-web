@@ -1,0 +1,16 @@
+{
+  "name": "Dr. Alejandro Viveros Domínguez - Otorrinolaringología",
+  "short_name": "OtorrinoNet",
+  "lang": "es-MX",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a5490",
+  "description": "Sitio del Dr. Alejandro Viveros Domínguez, otorrinolaringólogo y cirujano de cabeza y cuello en CDMX.",
+  "icons": [
+    { "src": "images/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },
+    { "src": "images/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "images/favicon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "images/favicon-256x256.png", "sizes": "256x256", "type": "image/png" }
+  ]
+}
