@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // --- RECOLECCIÓN DE DATOS ---
-    $nombre = strip_tags(trim($_POST["nombre"]));
+    // Sanitiza el nombre para prevenir inyección de cabeceras de email
+    $nombre = str_replace(array("\r", "\n"), '', strip_tags(trim($_POST["nombre"])));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $telefono = isset($_POST['telefono']) ? strip_tags(trim($_POST['telefono'])) : 'No proporcionado';
     $asunto_form = isset($_POST['asunto']) ? strip_tags(trim($_POST['asunto'])) : 'Contacto General';

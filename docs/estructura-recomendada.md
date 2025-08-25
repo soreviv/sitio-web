@@ -26,8 +26,8 @@ sitio-web/
 ├── .gitignore
 ├── deploy.sh                    # Script de despliegue
 └── docs/                        # Documentación y configuraciones
-    ├── nginx-config.conf
-    └── setup-instructions.md
+    ├── nginx-sample-config.conf
+    └── initial-server-setup.sh
 
 ## Archivos a ELIMINAR:
 - /frontend/ (mover contenido a raíz)
