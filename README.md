@@ -2,14 +2,13 @@
 
 Sitio web profesional del Dr. Alejandro Viveros Domínguez, especialista en otorrinolaringología y cirugía de cabeza y cuello.
 
-## Tecnologías Utilizadas
+## Stack Tecnológico y Despliegue
 
-- HTML5 & CSS3
-- JavaScript moderno
-- PHP
-- Nginx/Apache
-- Diseño Responsive
-- Optimización SEO
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Backend**: PHP
+- **Servidor**: Stack LEMP (Linux, Nginx, MariaDB, PHP)
+- **Seguridad**: Certificados SSL vía Certbot, cabeceras de seguridad HTTP.
+- **Automatización**: Scripts de Bash para configuración inicial (`initial-server-setup.sh`) y despliegues (`deploy.sh`).
 
 ## Características
 
@@ -35,6 +34,28 @@ Sitio web profesional del Dr. Alejandro Viveros Domínguez, especialista en otor
 ## Manifest & PWA (Pendiente Básico)
 
 Se añadirá `manifest.json` con nombre corto, iconos y tema para mejorar integración en dispositivos móviles.
+
+## Despliegue
+
+Este proyecto incluye scripts para automatizar la configuración y las actualizaciones del sitio.
+
+### 1. Configuración Inicial del Servidor
+
+El script `docs/initial-server-setup.sh` está diseñado para configurar un nuevo servidor Debian/Ubuntu desde cero. Instala y configura el stack LEMP, obtiene certificados SSL con Certbot y realiza el despliegue inicial.
+
+**Uso (como administrador del servidor):**
+1.  Clona este repositorio en el servidor.
+2.  Revisa y ajusta las variables dentro del script si es necesario.
+3.  Ejecuta el script: `bash docs/initial-server-setup.sh`
+
+### 2. Actualización del Sitio Web
+
+Para futuras actualizaciones, el script `deploy.sh` automatiza el proceso. Este script descarga los últimos cambios desde Git, sincroniza los archivos con el directorio web y aplica los permisos correctos.
+
+**Uso:**
+1.  Asegúrate de haber subido tus cambios al repositorio de Git (`git push`).
+2.  Conéctate al servidor.
+3.  Ejecuta el script de despliegue (ubicado en el directorio home del administrador durante la configuración inicial).
 
 ## Contacto
 

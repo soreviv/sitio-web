@@ -19,6 +19,7 @@ NC='\033[0m'
 REPO_DIR="/root/otorrinonet.com"
 WEB_ROOT="/var/www/otorrinonet.com"
 WEB_USER="www-data"
+BACKUP_DIR="/root/backups"
 
 print_message() {
     echo -e "${2}[$(date '+%Y-%m-%d %H:%M:%S')] $1${NC}"
@@ -26,15 +27,23 @@ print_message() {
 
 print_message "🚀 Iniciando despliegue..." "$YELLOW"
 
-# 1. Navegar al directorio del repositorio
+# 1. Crear directorio de respaldos si no existe
+mkdir -p "$BACKUP_DIR"
+
+# 2. Crear un respaldo del sitio actual
+BACKUP_FILE="$BACKUP_DIR/otorrinonet.com-$(date +%Y%m%d-%H%M%S).tar.gz"
+print_message "📦 Creando respaldo del sitio actual en $BACKUP_FILE..." "$YELLOW"
+tar -czf "$BACKUP_FILE" -C "$(dirname "$WEB_ROOT")" "$(basename "$WEB_ROOT")"
+
+# 3. Navegar al directorio del repositorio
 cd "$REPO_DIR" || { print_message "❌ Error: No se pudo encontrar el directorio del repositorio en $REPO_DIR." >&2; exit 1; }
 
-# 2. Actualizar el código desde Git
+# 4. Actualizar el código desde Git
 print_message "📥 Descargando últimos cambios desde Git (rama main)..." "$YELLOW"
 git checkout main
 git pull origin main
 
-# 3. Sincronizar archivos con el directorio web
+# 5. Sincronizar archivos con el directorio web
 # --delete: elimina archivos en el destino que ya no existen en el origen
 print_message "🔄 Sincronizando archivos con el directorio web..." "$YELLOW"
 rsync -av --delete \
@@ -45,14 +54,15 @@ rsync -av --delete \
       --exclude '.gitignore' \
       "$REPO_DIR/" "$WEB_ROOT/"
 
-# 4. Establecer permisos correctos
+# 6. Establecer permisos correctos
 print_message "🔒 Estableciendo permisos de archivos y directorios..." "$YELLOW"
 chown -R "$WEB_USER":"$WEB_USER" "$WEB_ROOT"
 find "$WEB_ROOT" -type d -exec chmod 755 {} \;
 find "$WEB_ROOT" -type f -exec chmod 644 {} \;
 
-# 5. Recargar PHP-FPM para limpiar caché de opcache
+# 7. Recargar PHP-FPM para limpiar caché de opcache
 print_message "💨 Recargando PHP-FPM para aplicar cambios..." "$YELLOW"
 systemctl reload php8.2-fpm
 
 print_message "✅ ¡Despliegue completado con éxito!" "$GREEN"
+print_message "ℹ️ Si necesitas revertir, el respaldo está en: $BACKUP_FILE" "$YELLOW"
