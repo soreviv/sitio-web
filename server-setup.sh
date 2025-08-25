@@ -62,10 +62,15 @@ server {
     listen 80;
     server_name $DOMAIN www.$DOMAIN;
     root /var/www/otorrinonet.com;
-    index index.html index.htm;
+    index index.php index.html index.htm;
 
     location / {
-        try_files \$uri \$uri/ =404;
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
     }
 
     location ~ /\.ht {

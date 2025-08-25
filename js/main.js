@@ -133,58 +133,6 @@ class MobileNavigation {
 function initNavigation() {
     // Initialize mobile navigation
     new MobileNavigation();
-    
-    // Add responsive styles if they don't exist
-    addResponsiveStyles();
-}
-
-function addResponsiveStyles() {
-    // Verificar si ya existen los estilos responsive
-    if (document.querySelector('#responsive-nav-styles')) return;
-    
-    const style = document.createElement('style');
-    style.id = 'responsive-nav-styles';
-    style.textContent = `
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex !important;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                z-index: 999;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                margin: 1rem 0;
-            }
-            
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-        }
-    `;
-    document.head.appendChild(style);
 }
 
 // ====================================
@@ -224,29 +172,34 @@ function handleFormSubmit(e) {
     submitBtn.textContent = 'Enviando...';
     submitBtn.disabled = true;
     
-    // Simular envío (aquí se conectaría con el backend)
-    setTimeout(() => {
+    // Enviar a backend con fetch
+    fetch('procesar-formulario.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showNotification(data.message, 'success');
+            form.reset();
+        } else {
+            throw new Error(data.message || 'Ocurrió un error.');
+        }
+    })
+    .catch(error => {
+        showNotification(`Error: ${error.message}`, 'error');
+        // Como fallback, se puede abrir WhatsApp
+        const openWhatsapp = confirm('No pudimos enviar el formulario. ¿Deseas intentarlo por WhatsApp?');
+        if (openWhatsapp) {
+            const whatsappMsg = encodeURIComponent(getWhatsAppMessage(formData));
+            window.open(`https://wa.me/525512345678?text=${whatsappMsg}`, '_blank');
+        }
+    })
+    .finally(() => {
         // Restablecer botón
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-        
-        // Limpiar formulario
-        form.reset();
-        
-        // Mostrar mensaje de éxito
-        if (form.classList.contains('appointment-form')) {
-            showNotification('¡Solicitud de cita enviada! Te contactaremos pronto para confirmar.', 'success');
-        } else {
-            showNotification('¡Mensaje enviado correctamente! Te responderemos pronto.', 'success');
-        }
-        
-        // Redirigir a WhatsApp como alternativa
-        setTimeout(() => {
-            const whatsappMsg = encodeURIComponent(getWhatsAppMessage(formData));
-            window.open(`https://wa.me/525512345678?text=${whatsappMsg}`, '_blank');
-        }, 2000);
-        
-    }, 1500);
+    });
 }
 
 function validateForm(form) {
@@ -314,8 +267,6 @@ function showFieldError(field, message) {
     }
     errorEl.textContent = message;
     
-    // Agregar estilos de error si no existen
-    addErrorStyles();
 }
 
 function clearError(e) {
@@ -326,29 +277,6 @@ function clearError(e) {
     if (errorEl) {
         errorEl.remove();
     }
-}
-
-function addErrorStyles() {
-    if (document.querySelector('#form-error-styles')) return;
-    
-    const style = document.createElement('style');
-    style.id = 'form-error-styles';
-    style.textContent = `
-        .form-group input.error,
-        .form-group textarea.error,
-        .form-group select.error {
-            border-color: #e74c3c !important;
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
-        }
-        
-        .error-message {
-            color: #e74c3c;
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-            display: block;
-        }
-    `;
-    document.head.appendChild(style);
 }
 
 function getWhatsAppMessage(formData) {
@@ -383,9 +311,6 @@ function showNotification(message, type = 'info') {
     // Agregar al DOM
     document.body.appendChild(notification);
     
-    // Agregar estilos si no existen
-    addNotificationStyles();
-    
     // Mostrar con animación
     setTimeout(() => notification.classList.add('show'), 100);
     
@@ -406,68 +331,6 @@ function closeNotification(notification) {
             notification.parentNode.removeChild(notification);
         }
     }, 300);
-}
-
-function addNotificationStyles() {
-    if (document.querySelector('#notification-styles')) return;
-    
-    const style = document.createElement('style');
-    style.id = 'notification-styles';
-    style.textContent = `
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            max-width: 400px;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification-success {
-            background: #27ae60;
-            color: white;
-        }
-        
-        .notification-error {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        .notification-info {
-            background: #3498db;
-            color: white;
-        }
-        
-        .notification-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        
-        .notification-close {
-            background: none;
-            border: none;
-            color: inherit;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
-            line-height: 1;
-        }
-        
-        .notification-close:hover {
-            opacity: 0.7;
-        }
-    `;
-    document.head.appendChild(style);
 }
 
 // ====================================
@@ -518,34 +381,6 @@ function initAnimations() {
     const animatableElements = document.querySelectorAll('.service-card, .contact-item, .info-card, .service-item');
     animatableElements.forEach(el => observer.observe(el));
     
-    // Agregar estilos de animación
-    addAnimationStyles();
-}
-
-function addAnimationStyles() {
-    if (document.querySelector('#animation-styles')) return;
-    
-    const style = document.createElement('style');
-    style.id = 'animation-styles';
-    style.textContent = `
-        .service-card,
-        .contact-item,
-        .info-card,
-        .service-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .service-card.animate-in,
-        .contact-item.animate-in,
-        .info-card.animate-in,
-        .service-item.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    document.head.appendChild(style);
 }
 
 // ====================================

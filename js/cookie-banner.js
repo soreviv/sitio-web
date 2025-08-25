@@ -13,8 +13,8 @@ function initCookieBanner() {
   banner.className = 'cookie-banner';
   banner.innerHTML = `
     <p>Utilizamos cookies para mejorar tu experiencia en nuestro sitio web y para proporcionar servicios personalizados. 
-    Al continuar navegando, aceptas nuestras <a href="/politica-cookies.html">Política de Cookies</a> y 
-    nuestro <a href="/aviso-privacidad.html">Aviso de Privacidad</a>.</p>
+    Al continuar navegando, aceptas nuestras <a href="politica-cookies.php">Política de Cookies</a> y 
+    nuestro <a href="aviso-privacidad.php">Aviso de Privacidad</a>.</p>
     <div class="cookie-buttons">
       <button class="reject-cookies">Rechazar</button>
       <button class="accept-cookies">Aceptar Cookies</button>

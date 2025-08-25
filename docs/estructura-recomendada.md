@@ -1,12 +1,15 @@
 ## Estructura Recomendada del Repositorio
 
 sitio-web/
-├── index.html                    # Página principal (SOLO UNA)
-├── agendar-cita.html
-├── contacto.html
-├── aviso-privacidad.html
-├── politica-cookies.html
-├── terminos-condiciones.html
+├── _header.php                  # Cabecera reutilizable
+├── _footer.php                  # Pie de página reutilizable
+├── index.php                    # Página principal
+├── servicios.php
+├── agendar-cita.php
+├── contacto.php
+├── aviso-privacidad.php
+├── politica-cookies.php
+├── terminos-condiciones.php
 ├── css/
 │   ├── styles.css               # CSS principal
 │   ├── social-media.css
