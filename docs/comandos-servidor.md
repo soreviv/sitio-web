@@ -1,4 +1,4 @@
-## Comandos para ejecutar en el servidor (root@66.42.95.115)
+## Comandos para ejecutar en el servidor (root@148.230.94.171)
 
 # 1. Crear respaldo de la configuración actual
 sudo cp /etc/nginx/sites-enabled/otorrinonet.com /etc/nginx/sites-enabled/otorrinonet.com.backup
