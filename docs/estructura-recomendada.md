@@ -29,11 +29,3 @@ sitio-web/
     ├── nginx-sample-config.conf
     └── initial-server-setup.sh
 
-## Archivos a ELIMINAR:
-- /frontend/ (mover contenido a raíz)
-- /backend/ (no se usa)
-- nginx.conf (duplicado)
-- nginx-config-complete.conf (mover a docs/)
-- comandos-servidor.md (mover a docs/)
-- diagnostico-servidor.md (temporal)
-- fix-nginx-https.sh (temporal)

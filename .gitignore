@@ -5,6 +5,7 @@ Thumbs.db
 # Directorios de dependencias
 /node_modules
 /vendor
+/imagenes 
 
 # Archivos de entorno y configuración
 .env
