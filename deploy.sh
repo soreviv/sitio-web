@@ -16,7 +16,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-REPO_DIR="/root/otorrinonet.com"
+REPO_DIR="/root/sitio-web"
 WEB_ROOT="/var/www/otorrinonet.com"
 WEB_USER="www-data"
 BACKUP_DIR="/root/backups"
@@ -30,7 +30,11 @@ print_message "🚀 Iniciando despliegue..." "$YELLOW"
 # 1. Crear directorio de respaldos si no existe
 mkdir -p "$BACKUP_DIR"
 
-# 2. Crear un respaldo del sitio actual
+# 2. Asegurar que el directorio web exista y crear respaldo
+print_message "🔎 Verificando que el directorio web $WEB_ROOT exista..." "$YELLOW"
+mkdir -p "$WEB_ROOT"
+chown "$WEB_USER":"$WEB_USER" "$WEB_ROOT"
+
 BACKUP_FILE="$BACKUP_DIR/otorrinonet.com-$(date +%Y%m%d-%H%M%S).tar.gz"
 print_message "📦 Creando respaldo del sitio actual en $BACKUP_FILE..." "$YELLOW"
 tar -czf "$BACKUP_FILE" -C "$(dirname "$WEB_ROOT")" "$(basename "$WEB_ROOT")"
