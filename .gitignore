@@ -45,6 +45,7 @@ yarn-error.log*
 *.pem
 *.key
 *.crt
+db_config.php
 
 # Archivos temporales
 /tmp
