@@ -50,13 +50,10 @@ systemctl enable mariadb
 print_message "🔑 Asegurando la instalación de MariaDB..." "$YELLOW"
 MYSQL_ROOT_PASSWORD=$(openssl rand -base64 32)
 
-mysql -e "UPDATE mysql.global_priv SET priv=json_set(priv, '$.access', 0xFFFFFFFF) WHERE User='root' AND Host='localhost';" 2>/dev/null || true
-mysql -e "FLUSH PRIVILEGES;"
-
-mysql --user=root << EOF
+mysql -u root << EOF
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
 DELETE FROM mysql.global_priv WHERE User='' OR Host NOT IN ('localhost', '127.0.0.1', '::1');
-DELETE FROM mysql.db WHERE Db='test' OR Db LIKE 'test\\_%';
+DELETE FROM mysql.db WHERE Db='test' OR Db LIKE 'test\_%';
 FLUSH PRIVILEGES;
 EOF
 
@@ -99,7 +96,8 @@ server {
     add_header X-XSS-Protection "1; mode=block" always;
 
     location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
+        try_files \$uri \$uri/ /index.php?\
+query_string;
     }
 
     location ~ \.php$ {
