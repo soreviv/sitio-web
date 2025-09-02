@@ -94,7 +94,13 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Solicitar Cita</button>
-                        <p id="form-message" class="form-note"></p>
+
+                        <!-- hCaptcha widget -->
+                        <div class="form-group">
+                            <div class="h-captcha" data-sitekey="YOUR-HCAPTCHA-SITEKEY"></div>
+                        </div>
+
+                        <p id="form-message" class="form-note">* Campos obligatorios. Te contactaremos en las próximas 24 horas para confirmar tu cita.</p>
                     </form>
                 </div>
             </div>
