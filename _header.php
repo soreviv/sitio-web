@@ -19,6 +19,8 @@
     gtag('js', new Date());
     gtag('config', 'G-N3VQ2LNFFP');
   </script>
+  <!-- hCaptcha -->
+  <script src="https://hcaptcha.com/1/api.js" async defer></script>
 </head>
 
 <body>

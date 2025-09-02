@@ -97,7 +97,7 @@
 
                         <!-- hCaptcha widget -->
                         <div class="form-group">
-                            <div class="h-captcha" data-sitekey="YOUR-HCAPTCHA-SITEKEY"></div>
+                            <div class="h-captcha" data-sitekey="af8a8d60-ef98-44dc-9702-bab2cb2e8ba6"></div>
                         </div>
 
                         <p id="form-message" class="form-note">* Campos obligatorios. Te contactaremos en las próximas 24 horas para confirmar tu cita.</p>
