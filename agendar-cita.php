@@ -35,7 +35,7 @@
                 </div>
                 
                 <div class="appointment-form-container">
-                    <form class="form appointment-form" id="appointmentForm">
+                    <form class="form appointment-form" action="procesar-formulario.php" method="POST" id="appointmentForm">
                         <h2>1. Completa tus datos</h2>
                         <div class="form-row">
                             <div class="form-group">
