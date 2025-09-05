@@ -1,3 +1,7 @@
+<?php
+$nonce = base64_encode(random_bytes(16));
+header("Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://js.hcaptcha.com https://hcaptcha.com 'nonce-$nonce'; connect-src 'self' https://www.google-analytics.com https://hcaptcha.com; img-src 'self' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline';");
+?>
 <!DOCTYPE html>
 <html lang="es-MX">
 
@@ -13,7 +17,7 @@
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3VQ2LNFFP"></script>
-  <script>
+  <script nonce="<?php echo htmlspecialchars($nonce, ENT_QUOTES); ?>">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
