@@ -38,6 +38,15 @@ Privacidad y datos personales
 
 Seguridad técnica y hardening
 - Cabeceras HTTP recomendadas: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy, Strict-Transport-Security.
+ - Cabeceras HTTP recomendadas: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy, Strict-Transport-Security.
+ - Otras cabeceras útiles: Permissions-Policy, Cross-Origin-Opener-Policy (COOP) y Cross-Origin-Embedder-Policy (COEP). Revisar su uso antes de activar porque COEP puede romper recursos externos.
+
+Acciones sugeridas aplicadas en `docs/nginx-config-complete.conf`:
+- Añadida `Referrer-Policy: strict-origin-when-cross-origin`.
+- Añadida `Permissions-Policy` para deshabilitar cámara/micro/geolocalización por defecto.
+- Añadidas `Cross-Origin-Opener-Policy: same-origin` y `Cross-Origin-Embedder-Policy: require-corp` (evaluar compatibilidad).
+- `X-XSS-Protection` configurada a `0` (obsoleta en navegadores modernos).
+- `server_tokens off` recomendado para ocultar la versión de nginx.
 - Saneamiento de output: escapar HTML, usar plantillas seguras y evitar incluir HTML sin sanitizar.
 - Rate limiting y protección contra bots: usar mecanismos como hCaptcha (ya integrado para formularios) y, si procede, reglas en el WAF o fail2ban.
 - Evitar exposición de información sensible en errores: configurar display_errors=Off en producción.
