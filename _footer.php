@@ -46,9 +46,9 @@
     </a>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/cookie-banner.js"></script>
-  <script src="js/content-protection.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/cookie-banner.js"></script>
+  <script src="/js/content-protection.js"></script>
 </body>
 
 </html>

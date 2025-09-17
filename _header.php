@@ -9,9 +9,15 @@ header("Content-Security-Policy: default-src 'self'; script-src 'self' https://w
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Las etiquetas title, meta description/keywords y canonical deben ser específicas de cada página -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/cookie-banner.css">
-  <link rel="stylesheet" href="css/social-media.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/cookie-banner.css">
+  <link rel="stylesheet" href="/css/social-media.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <!-- FullCalendar -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
