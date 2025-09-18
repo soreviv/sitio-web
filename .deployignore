@@ -1,37 +1,18 @@
-.git
-.github
-.vscode
-docs
-deploy
-.DS_Store
-Thumbs.db
-node_modules
-vendor
-*.log
-*.bak
-*.swp
-*~
-.cache/
-.temp/
-.sass-cache/
-dist
-build
-.idea/
-*.sublime-workspace
-*.sublime-project
-/backend/config.php
-/backend/security.php
-*.pem
-*.key
-*.crt
-db_config.php
-/tmp
-/temp
-.env
-.env.*
-!/.env.example
-.gitignore
-.deployignore
-deploy.sh
+# Excluir el repositorio de Git
+.git/
+
+# Excluir documentación
+/docs/
+
+# Excluir archivos de GitHub
+.github/
+
+# Excluir scripts de administración del servidor
+/deploy/
+
+# Excluir archivos del proyecto que no son parte del sitio web
 README.md
 LICENSE
+.gitignore
+.env.example
+deploy.sh
