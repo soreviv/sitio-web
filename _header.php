@@ -1,6 +1,16 @@
 <?php
 $nonce = base64_encode(random_bytes(16));
-header("Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://js.hcaptcha.com https://hcaptcha.com 'nonce-$nonce'; connect-src 'self' https://www.google-analytics.com https://hcaptcha.com; img-src 'self' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline';");
+
+// CONJUNTO DE DIRECTIVAS CSP CON CORRECCIÓN FINAL PARA data:
+$csp_header = "Content-Security-Policy: " .
+              "default-src 'self'; " .
+              "script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://js.hcaptcha.com https://hcaptcha.com 'nonce-$nonce'; " .
+              "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; " .
+              // Se añade 'data:' para permitir fuentes incrustadas
+              "font-src 'self' https://cdnjs.cloudflare.com https://newassets.hcaptcha.com data:; " .
+              "connect-src 'self' https://www.google-analytics.com https://hcaptcha.com https://newassets.hcaptcha.com; " .
+              "img-src 'self' data: https://www.google-analytics.com;";
+header($csp_header);
 ?>
 <!DOCTYPE html>
 <html lang="es-MX">
