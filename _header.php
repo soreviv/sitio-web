@@ -5,9 +5,9 @@ $nonce = base64_encode(random_bytes(16));
 $csp_header = "Content-Security-Policy: " .
               "default-src 'self'; " .
               "script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://js.hcaptcha.com https://hcaptcha.com 'nonce-$nonce'; " .
-              "style-src 'self' https://cdnjs.cloudflare.com; " .
-              // Se añade 'data:' para permitir fuentes incrustadas
-              "font-src 'self' https://cdnjs.cloudflare.com https://newassets.hcaptcha.com data:; " .
+              "style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; " .
+              // Se añade 'data:' para permitir fuentes incrustadas y se agrega fonts.gstatic.com
+              "font-src 'self' https://cdnjs.cloudflare.com https://newassets.hcaptcha.com https://fonts.gstatic.com data:; " .
               "connect-src 'self' https://www.google-analytics.com https://hcaptcha.com https://newassets.hcaptcha.com; " .
               "img-src 'self' data: https://www.google-analytics.com;" .
               "frame-src 'self' https://www.google.com https://newassets.hcaptcha.com https://hcaptcha.com;"
@@ -29,7 +29,15 @@ header($csp_header);
 
   <!-- Manifest -->
   <link rel="manifest" href="/manifest.json">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
   <!-- FullCalendar -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
   <!-- Google tag (gtag.js) -->
