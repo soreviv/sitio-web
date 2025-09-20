@@ -5,11 +5,12 @@ $nonce = base64_encode(random_bytes(16));
 $csp_header = "Content-Security-Policy: " .
               "default-src 'self'; " .
               "script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://js.hcaptcha.com https://hcaptcha.com 'nonce-$nonce'; " .
-              "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; " .
+              "style-src 'self' https://cdnjs.cloudflare.com; " .
               // Se añade 'data:' para permitir fuentes incrustadas
               "font-src 'self' https://cdnjs.cloudflare.com https://newassets.hcaptcha.com data:; " .
               "connect-src 'self' https://www.google-analytics.com https://hcaptcha.com https://newassets.hcaptcha.com; " .
-              "img-src 'self' data: https://www.google-analytics.com;";
+              "img-src 'self' data: https://www.google-analytics.com;" .
+              "frame-src 'self' https://www.google.com https://newassets.hcaptcha.com https://hcaptcha.com;"
 header($csp_header);
 ?>
 <!DOCTYPE html>

@@ -49,3 +49,12 @@
     text-align: center;
     padding: 20px;
 }
+
+/* Utility classes for dynamic messages */
+.text-danger {
+  color: #dc3545; /* Red for errors */
+}
+
+.text-success {
+  color: #28a745; /* Green for success */
+}

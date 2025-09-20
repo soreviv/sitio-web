@@ -107,7 +107,7 @@
         </div>
 </section>
 
-<script>
+<script nonce="<?php echo htmlspecialchars($nonce, ENT_QUOTES); ?>">
 document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar');
     const timeSlotsContainer = document.getElementById('time-slots-container');
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => {
                     loader.style.display = 'none';
-                    timeSlotsDiv.innerHTML = `<p style="color: red;">Error al cargar los horarios. Por favor, intente de nuevo.</p>`;
+                    timeSlotsDiv.innerHTML = `<p class="text-danger">Error al cargar los horarios. Por favor, intente de nuevo.</p>`;
                     console.error('Error fetching slots:', error);
                 });
         }
@@ -193,10 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         formMessage.textContent = 'Enviando...';
+        formMessage.classList.remove('text-danger', 'text-success');
 
         if (!selectedDateInput.value || !selectedTimeInput.value) {
             formMessage.textContent = 'Por favor, seleccione una fecha y hora en el calendario.';
-            formMessage.style.color = 'red';
+            formMessage.classList.add('text-danger');
             return;
         }
 
@@ -208,19 +209,20 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            formMessage.classList.remove('text-danger', 'text-success');
             if (data.status === 'success') {
-                formMessage.style.color = 'green';
+                formMessage.classList.add('text-success');
                 form.reset();
                 calendar.unselect();
                 timeSlotsContainer.style.display = 'none';
-                // Opcional: Redirigir o mostrar un mensaje más permanente
             } else {
-                formMessage.style.color = 'red';
+                formMessage.classList.add('text-danger');
             }
             formMessage.textContent = data.message;
         })
         .catch(error => {
-            formMessage.style.color = 'red';
+            formMessage.classList.remove('text-danger', 'text-success');
+            formMessage.classList.add('text-danger');
             formMessage.textContent = 'Ocurrió un error de red. Intente de nuevo.';
             console.error('Submit error:', error);
         });

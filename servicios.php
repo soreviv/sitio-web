@@ -6,7 +6,7 @@
         content="servicios otorrino CDMX, consulta otorrinolaringología, cirugía cabeza cuello, audiometría, rinoplastia, amigdalectomía">
     <link rel="canonical" href="https://otorrinonet.com/servicios.php">
 <!-- INICIO: Datos Estructurados (Schema.org) para SEO -->
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="<?php echo htmlspecialchars($nonce, ENT_QUOTES); ?>">
 {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
