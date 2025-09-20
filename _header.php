@@ -10,7 +10,7 @@ $csp_header = "Content-Security-Policy: " .
               "font-src 'self' https://cdnjs.cloudflare.com https://newassets.hcaptcha.com https://fonts.gstatic.com data:; " .
               "connect-src 'self' https://www.google-analytics.com https://hcaptcha.com https://newassets.hcaptcha.com; " .
               "img-src 'self' data: https://www.google-analytics.com;" .
-              "frame-src 'self' https://www.google.com https://newassets.hcaptcha.com https://hcaptcha.com;"
+              "frame-src 'self' https://www.google.com https://newassets.hcaptcha.com https://hcaptcha.com;";
 header($csp_header);
 ?>
 <!DOCTYPE html>
