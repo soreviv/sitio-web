@@ -40,7 +40,7 @@
 
   <!-- WhatsApp Button -->
   <div class="whatsapp-float">
-    <a href="https://wa.me/525512345678?text=Hola,%20me%20gustaría%20agendar%20una%20cita" target="_blank"
+    <a href="https://wa.me/525625479868?text=Hola,%20me%20gustaría%20agendar%20una%20cita" target="_blank"
       aria-label="Contactar por WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
