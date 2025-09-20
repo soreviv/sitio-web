@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # ==============================================================================
-# Script de Configuración Inicial del Servidor v2.0
+# Script de Configuración Inicial del Servidor v2.0 - CORREGIDO
 # ==============================================================================
 # Propósito: Automatiza la configuración de un nuevo servidor Debian/Ubuntu
 #            para alojar el sitio web, incluyendo un sistema de despliegue robusto.
+#            Esta versión es compatible con entornos sin systemd (contenedores)
+#            y es no interactiva.
 # Uso:       Ejecutar como root en un servidor limpio.
-#            # bash initial-server-setup-v2.sh
+#            # bash initial-server-setup-v2-fixed.sh
 # ==============================================================================
 
 set -e
@@ -36,27 +38,28 @@ print_message() {
 # --- Inicio del Script ---
 print_message "🚀 Iniciando configuración completa del servidor para $DOMAIN..."
 
-# 1. Actualizar sistema
+# 1. Actualizar sistema de forma no interactiva
 print_message "🔄 Actualizando paquetes del sistema..."
-apt update && apt upgrade -y
+export DEBIAN_FRONTEND=noninteractive
+apt-get update && apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
 
 # 2. Añadir repositorio de PHP
 print_message "➕ Añadiendo repositorio de PHP (Ondřej Surý PPA)..."
-apt install -y software-properties-common
+apt-get install -y software-properties-common
 add-apt-repository ppa:ondrej/php -y
-apt update
+apt-get update
 
 # 3. Instalar dependencias (LEMP, Git, Certbot, etc.)
 print_message "📦 Instalando dependencias (Nginx, MariaDB, PHP, Git, Certbot)..."
-apt install -y nginx mariadb-server \
+apt-get install -y nginx mariadb-server \
     "php${PHP_VERSION}-fpm" "php${PHP_VERSION}-mysql" "php${PHP_VERSION}-cli" "php${PHP_VERSION}-curl" \
     "php${PHP_VERSION}-gd" "php${PHP_VERSION}-mbstring" "php${PHP_VERSION}-xml" "php${PHP_VERSION}-zip" \
     git certbot python3-certbot-nginx unzip
 
-# 4. Iniciar y habilitar servicios
-print_message "▶️ Iniciando y habilitando servicios Nginx y MariaDB..."
-systemctl start nginx && systemctl enable nginx
-systemctl start mariadb && systemctl enable mariadb
+# 4. Iniciar servicios
+print_message "▶️ Iniciando servicios Nginx y MariaDB..."
+service nginx start
+service mariadb start && sleep 5 # Dar tiempo a que el servicio inicie
 
 # 5. Asegurar MariaDB de forma no interactiva
 print_message "🔑 Asegurando la instalación de MariaDB..."
@@ -136,8 +139,8 @@ chown -R "$WEB_USER":"$WEB_USER" "$WEB_ROOT"
 find "$WEB_ROOT" -type d -exec chmod 755 {} \;
 find "$WEB_ROOT" -type f -exec chmod 644 {} \;
 print_message "💨 Recargando PHP-FPM para aplicar cambios..."
-if systemctl is-active --quiet "$PHP_FPM_SERVICE"; then
-    systemctl reload "$PHP_FPM_SERVICE"
+if service "$PHP_FPM_SERVICE" status > /dev/null; then
+    service "$PHP_FPM_SERVICE" reload
 else
     print_message "⚠️ Advertencia: El servicio $PHP_FPM_SERVICE no está activo. Saltando recarga." "$YELLOW"
 fi
@@ -209,7 +212,7 @@ print_message "🔗 Activando sitio y probando configuración de Nginx..."
 ln -sf "/etc/nginx/sites-available/$DOMAIN" /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 nginx -t
-systemctl reload nginx
+service nginx reload
 
 # 14. Ejecutar el primer despliegue
 print_message "✨ Ejecutando el primer despliegue para poblar el directorio web..."
@@ -222,7 +225,7 @@ certbot --nginx -d "$DOMAIN" -d "www.$DOMAIN" --non-interactive --agree-tos --em
 # 16. Ocultar versión de PHP
 print_message "🙈 Ocultando la versión de PHP en las cabeceras HTTP..."
 sed -i 's/expose_php = On/expose_php = Off/' "/etc/php/${PHP_VERSION}/fpm/php.ini"
-systemctl restart "php${PHP_VERSION}-fpm"
+service "php${PHP_VERSION}-fpm" restart
 
 # 17. Configurar renovación automática de SSL
 print_message "🔄 Configurando renovación automática de SSL..."
