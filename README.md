@@ -8,7 +8,6 @@ Sitio web profesional del Dr. Alejandro Viveros Domínguez, especialista en otor
 - **Backend**: PHP
 - **Servidor**: Stack LEMP (Linux, Nginx, MariaDB, PHP)
 - **Seguridad**: Certificados SSL vía Certbot, cabeceras de seguridad HTTP.
-- **Automatización**: Scripts de Bash para configuración inicial (`initial-server-setup.sh`) y despliegues (`deploy.sh`).
 
 ## Características
 
