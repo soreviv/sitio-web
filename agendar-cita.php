@@ -140,14 +140,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 return; // No hacer nada en días deshabilitados
             }
 
+            // Remover selección previa del calendario
+            calendar.unselect();
+
             selectedDateInput.value = info.dateStr;
             timeSlotsContainer.style.display = 'block';
             timeSlotsDiv.innerHTML = '';
             loader.style.display = 'block';
-            loader.textContent = 'Buscando horarios para el ' + info.date.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            loader.textContent = 'Buscando horarios disponibles...';
 
             // Des-seleccionar hora previa
             selectedTimeInput.value = '';
+
+            // Agregar animación de carga
+            timeSlotsContainer.classList.add('loading');
 
             fetch(`get_available_slots.php?date=${info.dateStr}`)
                 .then(response => {
@@ -158,16 +164,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(slots => {
                     loader.style.display = 'none';
+                    timeSlotsContainer.classList.remove('loading');
+
                     if (slots.length === 0) {
-                        timeSlotsDiv.innerHTML = '<p>No hay horarios disponibles para este día.</p>';
+                        timeSlotsDiv.innerHTML = `
+                            <div class="no-slots">
+                                <i class="fas fa-calendar-times"></i>
+                                <p>No hay horarios disponibles para este día.</p>
+                                <small>Selecciona otra fecha para ver más opciones.</small>
+                            </div>
+                        `;
                     } else {
-                        slots.forEach(slot => {
+                        // Crear header para los horarios
+                        const slotsHeader = document.createElement('div');
+                        slotsHeader.className = 'slots-header';
+                        slotsHeader.innerHTML = `
+                            <h4><i class="fas fa-clock"></i> Horarios disponibles</h4>
+                            <span class="slots-count">${slots.length} horario${slots.length !== 1 ? 's' : ''} disponible${slots.length !== 1 ? 's' : ''}</span>
+                        `;
+                        timeSlotsDiv.appendChild(slotsHeader);
+
+                        // Crear grid de horarios
+                        const slotsGrid = document.createElement('div');
+                        slotsGrid.className = 'time-slots-grid';
+
+                        slots.forEach((slot, index) => {
                             const btn = document.createElement('button');
                             btn.type = 'button';
                             btn.className = 'time-slot-btn';
                             btn.textContent = slot;
                             btn.dataset.time = slot;
-                            timeSlotsDiv.appendChild(btn);
+
+                            // Agregar delay para animación staggered
+                            btn.style.animationDelay = `${index * 50}ms`;
+
+                            slotsGrid.appendChild(btn);
 
                             btn.addEventListener('click', function() {
                                 // Quitar clase selected de otros botones
@@ -176,13 +207,25 @@ document.addEventListener('DOMContentLoaded', function() {
                                 this.classList.add('selected');
                                 // Guardar valor
                                 selectedTimeInput.value = this.dataset.time;
+
+                                // Mostrar confirmación visual
+                                showNotification(`Horario seleccionado: ${slot}`, 'success');
                             });
                         });
+
+                        timeSlotsDiv.appendChild(slotsGrid);
                     }
                 })
                 .catch(error => {
                     loader.style.display = 'none';
-                    timeSlotsDiv.innerHTML = `<p class="text-danger">Error al cargar los horarios. Por favor, intente de nuevo.</p>`;
+                    timeSlotsContainer.classList.remove('loading');
+                    timeSlotsDiv.innerHTML = `
+                        <div class="error-slots">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Error al cargar los horarios</p>
+                            <small>Por favor, intenta de nuevo o contacta al consultorio.</small>
+                        </div>
+                    `;
                     console.error('Error fetching slots:', error);
                 });
         }
@@ -227,6 +270,43 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Submit error:', error);
         });
     });
+
+    // Función para mostrar notificaciones
+    function showNotification(message, type = 'info') {
+        // Crear elemento de notificación
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-message">${message}</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        `;
+
+        // Agregar al DOM
+        document.body.appendChild(notification);
+
+        // Mostrar con animación
+        setTimeout(() => notification.classList.add('show'), 100);
+
+        // Auto-cerrar después de 3 segundos
+        const autoClose = setTimeout(() => closeNotification(notification), 3000);
+
+        // Cerrar manualmente
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+            clearTimeout(autoClose);
+            closeNotification(notification);
+        });
+    }
+
+    function closeNotification(notification) {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }
 });
 </script>
 
